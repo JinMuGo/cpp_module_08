@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 10:16:50 by jgo               #+#    #+#             */
-/*   Updated: 2023/07/24 11:46:08 by jgo              ###   ########.fr       */
+/*   Updated: 2023/07/24 11:46:50 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ class MutantStack : public std::stack<T, std::deque<T> > {
 	const_reverse_iterator crend(void) const { return this->c.rend(); }
 
 	MutantStack(void) { std::cout << MS_DFLT_CTOR << std::endl; }
-	MutantStack(const MutantStack& obj):std::stack<T>(obj) {
+	MutantStack(const MutantStack& obj) : std::stack<T>(obj) {
 		std::cout << MS_CPY_CTOR << std::endl;
 		*this = obj;
 	}
