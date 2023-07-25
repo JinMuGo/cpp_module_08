@@ -6,7 +6,7 @@
 /*   By: jgo <jgo@student.42seoul.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 09:51:44 by jgo               #+#    #+#             */
-/*   Updated: 2023/07/24 09:46:51 by jgo              ###   ########.fr       */
+/*   Updated: 2023/07/25 13:46:38 by jgo              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <list>
 #include <vector>
 #include "color.h"
-#include "easyfind.hpp"
+#include "easyfind.tpp"
 #include "version.h"
 
 static inline void printTitle(void) {
@@ -31,7 +31,6 @@ static inline void printTitle(void) {
 static inline void myTest(void) {
 	std::vector<int> vec(10);
 	std::deque<int> deq(15);
-	std::list<int> list;
 
 	for (int i = 0; i < 10; ++i) {
 		vec.at(i) = i + 1;
@@ -42,6 +41,11 @@ static inline void myTest(void) {
 		deq.at(i) = i * 2;
 	}
 	testContainer(deq, 8);
+}
+
+static inline void _errorTest(void) {
+	std::vector<int> vec(0);
+	std::list<int> list;
 
 	list.push_back(-5);
 	list.push_back(-3);
@@ -49,6 +53,8 @@ static inline void myTest(void) {
 	list.push_back(3);
 	list.push_back(5);
 	testContainer(list, -1);
+
+	testContainer(vec, 3);
 }
 
 int main(void) {
@@ -56,6 +62,7 @@ int main(void) {
 	PRT_VER;
 	try {
 		myTest();
+		_errorTest();
 	} catch (const std::exception& e) {
 		std::cerr << e.what() << '\n';
 	}
